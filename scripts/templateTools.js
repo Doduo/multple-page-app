@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const glob = require("glob");
-const paths = require("./config/paths");
+const paths = require("../config/paths");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const allSitePath = (isEnvDevelopment) => {
@@ -10,7 +10,6 @@ const allSitePath = (isEnvDevelopment) => {
   let map = {};
   entryFiles.forEach((item) => {
     let filename = item.substring(item.lastIndexOf("/") + 1);
-    // let filePath = `${item}/${filename}.js`;
     let filePath = `${item}/index.js`;
 
     map[filename] = [
@@ -25,12 +24,16 @@ const allSitePath = (isEnvDevelopment) => {
 
 const htmlPlugin = (isEnvProduction, isEnvDevelopment) => {
   let fileNameLists = Object.keys(allSitePath(isEnvDevelopment));
-
   let arr = [];
   fileNameLists.forEach((item) => {
     let filename = item.substring(item.lastIndexOf("/") + 1);
+    const filepath = path.resolve(
+      paths.appSrc,
+      `pages/${filename}/${filename}.html`
+    );
+    // 检测是否存在自定义模板文件，不存在则使用公共模板
+    const isExistHtml = fs.existsSync(filepath);
     arr.push(
-      // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
           {},
@@ -38,11 +41,9 @@ const htmlPlugin = (isEnvProduction, isEnvDevelopment) => {
             inject: true,
             filename: item + ".html",
             chunks: [item],
-            template: path.resolve(paths.appSrc, `index.html`),
-            // template: path.resolve(
-            //   paths.appSrc,
-            //   `pages/${filename}/${filename}.html`
-            // ),
+            template: isExistHtml
+              ? filepath
+              : path.resolve(paths.appSrc, `index.html`),
           },
           isEnvProduction
             ? {

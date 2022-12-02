@@ -44,7 +44,7 @@ const babelRuntimeRegenerator = require.resolve("@babel/runtime/regenerator", {
   paths: [babelRuntimeEntry],
 });
 
-const tools = require("../tools");
+const templateTools = require("../scripts/templateTools");
 
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
@@ -204,7 +204,7 @@ module.exports = function (webpackEnv) {
       : isEnvDevelopment && "cheap-module-source-map",
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
-    entry: tools.allSitePath(isEnvDevelopment),
+    entry: templateTools.allSitePath(isEnvDevelopment),
     output: {
       // The build folder.
       path: paths.appBuild,
@@ -562,7 +562,7 @@ module.exports = function (webpackEnv) {
     },
     plugins: [
       // Generates an `index.html` file with the <script> injected.
-      ...tools.htmlPlugin(isEnvProduction, isEnvDevelopment),
+      ...templateTools.htmlPlugin(isEnvProduction, isEnvDevelopment),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
