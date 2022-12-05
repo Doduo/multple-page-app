@@ -7526,11 +7526,7 @@ rc-upload@~4.3.0:
 
 rc-util@^5.0.1, rc-util@^5.0.6, rc-util@^5.12.0, rc-util@^5.15.0, rc-util@^5.16.0, rc-util@^5.16.1, rc-util@^5.17.0, rc-util@^5.18.1, rc-util@^5.19.2, rc-util@^5.2.0, rc-util@^5.2.1, rc-util@^5.20.1, rc-util@^5.21.0, rc-util@^5.21.2, rc-util@^5.22.5, rc-util@^5.23.0, rc-util@^5.24.2, rc-util@^5.24.4, rc-util@^5.3.0, rc-util@^5.4.0, rc-util@^5.6.1, rc-util@^5.8.0, rc-util@^5.9.4:
   version "5.25.1"
-<<<<<<< HEAD
   resolved "https://registry.npmjs.org/rc-util/-/rc-util-5.25.1.tgz"
-=======
-  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.25.1.tgz#830b815a1054bc843fb22eebd69a7a221b6a0437"
->>>>>>> 6d098a9c0daafd51755cf30273ece53aa669de00
   integrity sha512-vnd5B2xXHNeQImYqOejcLtwdNdlR1oosIaxt+9d65vpo5H0pEEx/gxBQuZgaq4urPt+6y+wshQGNpW+S/KNjhg==
   dependencies:
     "@babel/runtime" "^7.18.3"
