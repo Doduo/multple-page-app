@@ -43,7 +43,7 @@ const babelRuntimeRegenerator = require.resolve("@babel/runtime/regenerator", {
   paths: [babelRuntimeEntry],
 });
 
-const templateTools = require("../scripts/templateTools");
+const templateTools = require("../templateTools");
 
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== "false";
 

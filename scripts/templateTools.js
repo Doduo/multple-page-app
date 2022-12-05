@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const glob = require("glob");
-const paths = require("../config/paths");
+const paths = require("./config/paths");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const allSitePath = (isEnvDevelopment) => {
